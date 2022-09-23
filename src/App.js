@@ -1,10 +1,10 @@
 import React from 'react'
 import { Divider, Layout, Menu } from 'antd'
-import { UserOutlined,HighlightOutlined, UserAddOutlined } from '@ant-design/icons';
+import { UserOutlined,HighlightOutlined, UserAddOutlined, SmileOutlined, PaperClipOutlined, SendOutlined } from '@ant-design/icons';
 import { Avatar, Typography, Input } from 'antd';
 
 
-const { Search } = Input;
+const { TextArea  } = Input;
 const { Content, Sider, Header, Footer } = Layout
 const { Text, Title } = Typography
 const App = () => {
@@ -40,14 +40,22 @@ const App = () => {
           </Sider>
           <Content>
             <Header style={{height:'55px', backgroundColor:'white'}}>
-              <Title level={3} style={{marginBottom:'0px', lineHeight:'50px'}}>Sample</Title>
+              <Title level={4} style={{marginBottom:'0px', lineHeight:'50px'}}>Sample</Title>
             </Header>
-            <Content style={{padding:'0 3rem'}}>
+            <Content style={{padding:'0 3rem', height: 'calc(100% - 150px)'}}>
               test
             </Content>
             <Footer>
-              <Search placeholder="input search text" enterButton />
-
+              <TextArea placeholder="Autosize height based on content lines" autoSize />
+              <div style={{display:'flex', justifyContent:'space-between', marginTop:'5px'}}>
+                <div>
+                  <SmileOutlined style={{fontSize:'25px', marginRight:'5px'}}/>
+                  <PaperClipOutlined style={{fontSize:'25px'}} />
+                </div>
+                <div>
+                  <SendOutlined style={{fontSize:'25px'}}/>
+                </div>      
+              </div>
             </Footer>
           </Content>
         </Layout>

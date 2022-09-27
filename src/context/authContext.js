@@ -1,11 +1,12 @@
 import { createContext, useState } from "react";
-import { logInWithGoogle } from "../services/firebase";
+import { getAvailableUser, logInWithGoogle } from "../services/firebase";
 
 
 const AuthContext = createContext();
 
 const AuthProvider = (props) => {
    const [userState, setUserState] = useState();
+   const [users, setUsers] = useState()
 
    const logInWithGoogleAuth = async() => {
       const user  = await logInWithGoogle()
@@ -13,12 +14,13 @@ const AuthProvider = (props) => {
          console.log('Failed to login!')
       }
       setUserState(user)
+      // getAvailableUsers()
    }
 
-   const logInWithCredentials = () => {
-
-   }
-   const value = { userState, logInWithGoogleAuth}
+   const getAvailableUsers = async() => [
+      setUsers(await getAvailableUser(userState.email))
+   ]
+   const value = { userState, users, logInWithGoogleAuth, getAvailableUsers}
    return  <AuthContext.Provider value={value} {...props}></AuthContext.Provider>
 }
 
